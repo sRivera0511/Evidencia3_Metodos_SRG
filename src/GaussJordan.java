@@ -4,6 +4,8 @@ import java.util.Scanner;   // Libreria que permite al usuario ingresar datos.
     Evidencia 3
     Métodos Númericos
 
+    Método elegido: Gauss-Jordan
+
     by Sebastián Rivera - AL03084547
     09/May/2025
 */ 
@@ -67,4 +69,32 @@ public class GaussJordan {
             System.out.println();
         }
     }
+
+    // Método para llevar a cabo la eliminación Gauss-Jordan
+    public static void eliminaciónGJ(double[][] matriz) {
+        
+        int n = matriz.length; // Obtiene el tamaño de la matriz.
+
+        for (int i = 0; i < n; i++) {
+            
+            // Se realiza la división con el pivote de la fila actual.
+            double pivote = matriz [i][i];
+            for (int j = 0; j < n + 1; j++) {
+                matriz[i][j] /= pivote;
+            }
+
+            // Eliminamos los valores en la columna del pivote en otras filas.
+            for (int k = 0; k < n; k++) {
+                if (k != i) {
+                    double valorP = matriz[k][i];
+                    for (int j = 0; j < n + 1; j++) {
+                        matriz[k][j] -= valorP * matriz[i][j];
+                    }
+                }
+            }
+
+        }
+    }
+
+
 }
