@@ -51,9 +51,13 @@ public class GaussJordan {
         matriz[i][n] = sc.nextDouble();
     }
 
-    System.out.println("\n\nMATRIZ AUMENTADA INGRESADA\n");      
+    System.out.println("\n\nMATRIZ AUMENTADA INGRESADA");      
     mostrarMatriz(matriz);  // Se llama el método para mostrar la matriz aumentada.
     
+    System.out.println("\n-------------------------------- Realizar eliminación Gauss-Jordan --------------------------------\n");
+
+    eliminaciónGJ(matriz);  // Se llama el método para resolver la matriz.
+
     System.out.println("\n--------------------------------- Programa Finalizado v1.0 by SRG ---------------------------------\n");
 
     sc.close();
@@ -102,6 +106,11 @@ public class GaussJordan {
             // Mostrar la matriz tras cada paso
             System.out.println("\nPaso " + (i + 1) + ":");
             mostrarMatriz(matriz);
+        }
+
+        System.out.println("\nSoluciones del sistema de ecuaciones:");
+        for (int i = 0; i < n; i++) {
+            System.out.printf("x%d = %.4f\n", i+1, matriz[i][n]);   // Utilizo el 'printf' para darle formato a la impresión de texto.
         }
     }
 }
