@@ -53,7 +53,7 @@ public class GaussJordan {
 
     System.out.println("\n\nMATRIZ AUMENTADA INGRESADA\n");      
     mostrarMatriz(matriz);  // Se llama el método para mostrar la matriz aumentada.
-
+    
     System.out.println("\n--------------------------------- Programa Finalizado v1.0 by SRG ---------------------------------\n");
 
     sc.close();
@@ -77,6 +77,12 @@ public class GaussJordan {
 
         for (int i = 0; i < n; i++) {
             
+            // Evitamos la división por cero (pivote cero)
+            if (matriz[i][i] == 0) {
+                System.out.println("Error, pivote cero en la fila " + (i+1));
+                return;
+            }
+
             // Se realiza la división con el pivote de la fila actual.
             double pivote = matriz [i][i];
             for (int j = 0; j < n + 1; j++) {
@@ -93,8 +99,9 @@ public class GaussJordan {
                 }
             }
 
+            // Mostrar la matriz tras cada paso
+            System.out.println("\nPaso " + (i + 1) + ":");
+            mostrarMatriz(matriz);
         }
     }
-
-
 }
